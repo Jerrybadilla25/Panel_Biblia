@@ -1,25 +1,81 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Home from './Vistas/Home';
+import Login from './Login/Login';
+import toast, { Toaster } from "react-hot-toast";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+function App(props) {
+
+    //toaster
+  const notify = (mesage) =>
+    toast.success(`${mesage}`, {
+      duration: 5000,
+      position: "top-left",
+      style: {
+        background: "#f3f4f6",
+        color: "#140e1b",
+      },
+    });
+
+  const [user, setUser]=useState({});
+  const [FormUser, setFormUser]=useState({});
+  //const http= "http://ajustes.api.bibliaav.ml";
+  const http = " http://localhost:3000";
+  
+  
+
+  const LoginOut = ()=>{
+    setUser({});
+    setFormUser({});
+  }
+
+  
+  const datosFormLogin = (e) => {
+    setFormUser({
+      ...FormUser,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const getUser= async(e)=>{
+    e.preventDefault();
+    const data = await fetch(`${http}/user/login`,{
+          method: "POST",
+          body: JSON.stringify(FormUser),
+          headers: {
+             "Content-Type": "application/json",
+             Accept: "application/json",
+             
+      },
+    });
+    const res = await data.json();
+    if(res.message){
+      notify(res.message);
+    }else{
+      setUser(res);
+      notify("Success");
+    }
+  }
+
+  return(
+    
+      <div>
+        {
+          user._id 
+          ?
+          <Home http={http} user={user} LoginOut={LoginOut}/>
+          :
+          <Login datosFormLogin={datosFormLogin} getUser={getUser}/>
+        }
+       <Toaster />  
+      </div>
+      
+    
+  )
 }
 
 export default App;
