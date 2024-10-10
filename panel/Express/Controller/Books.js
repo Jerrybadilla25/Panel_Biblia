@@ -216,7 +216,7 @@ exports.setverseManual = async (req, res) => {
 }
 
 // crear los libros de forma manual y masiva, primero crear la version a mano
-exports.createManual = () => {
+ exports.createManual = () => {
   //const libro = require('../Libros/ReinaValera/fullLibroReinaValera.json') 
   //var version = "Reina Valera 1960"
   //var userCreator = "Jerry"
@@ -228,22 +228,43 @@ exports.createManual = () => {
 }
 
 //funcion para guardar los capitulos y versiculos de forma manual y masiva
-exports.createManualCapituloVersiculo = async () => {
+  exports.createManualCapituloVersiculo = async () => {
   const libro = require('../Libros/ReinaValera/fullLibroReinaValera.json')
   var version = "Reina Valera 1960"
   let books = await Book.find({ version: version })
-  //console.log(books)
+  console.log(libro[4].verses)
   
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < books.length; i++) {
     
-    var idbook = books[1]._id
+    let idbook = books[i]._id
       
       //console.log(idbook)
-    for (let a = 0; a < 4; a++){
+    for (let a = 0; a < libro.length; a++){
       const capitulo = new Charter({ idBook: idbook, charter: libro[a].charter, order: libro[a].order, userCreator: libro[a].userCreator, version: libro[a].version, testament: libro[a].testament });
-      books.capitulos.push(capitulo._id)
-      //books.save()
-      console.log(books)
+      //let bookss = await Book.find({ version: version })
+      books[i].capitulos.push(capitulo._id)
+      //await books[i].save();
+      //await capitulo.save();
+      console.log(capitulo.charter)
+      for (let x = 0; x < libro[a].verses.length; x++){
+        //console.log(libro[i].verses[x])
+        //console.log(libro[5].verses)
+        const newVerse = await Verse({
+          version: libro[i].verses[x].version,
+          testament: libro[i].verses[x].testament,
+          userCreator: libro[i].verses[x].userCreator,
+          originCharter: capitulo.charter,
+          versiculo: libro[i].verses[x].versiculo,
+          numero: libro[i].verses[x].numero,
+        })
+        
+        //var capitulos = await Charter.findById(capitulo._id)
+        capitulo.verses.push(newVerse._id)
+        //await newVerse.save()
+        //await capitulo.save()
+        console.log(newVerse.numero)
+      }
+
     }
     
     
@@ -256,7 +277,10 @@ exports.createManualCapituloVersiculo = async () => {
 
 }
 
+/*
 
+
+        */
 
 // con esta funcion se crean de forma masiva los libros, algunos datos var son manuales
 /*
