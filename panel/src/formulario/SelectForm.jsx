@@ -6,23 +6,6 @@ import React from "react";
 export default function SelectForm(props) {
   
 
-  const cargaManual = async ()=>{
-    console.log(props)
-    try {
-      const data = await fetch("http://localhost:3000/books/createManual", {
-        mode: 'cors',
-        headers: {
-          "Content-Type": "application/json",
-           Accept: "application/json",
-           "x-access-token": props.user.token
-        },
-      });
-      const res = await data.json();
-      console.log(res);
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
 
   return (
@@ -34,11 +17,7 @@ export default function SelectForm(props) {
         </p>
       </div>
       
-        <div className="my-3 mx-5 d-flex justify-content-around">
-        <button className="btn-select-form" onClick={cargaManual}>
-            Manual
-          </button>
-       
+        <div className="my-3 mx-5 d-flex justify-content-around"> 
         <button className="btn-select-form" onClick={props.versionBiblia}>
             Version
           </button>

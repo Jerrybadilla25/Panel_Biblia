@@ -216,64 +216,77 @@ exports.setverseManual = async (req, res) => {
 }
 
 // crear los libros de forma manual y masiva, primero crear la version a mano
- exports.createManual = () => {
+exports.createManual = () => {
   //const libro = require('../Libros/ReinaValera/fullLibroReinaValera.json') 
   //var version = "Reina Valera 1960"
   //var userCreator = "Jerry"
   //var idVersion = "6702be0a3fd346d5644ed5a2"
 
   //addBookManual(version, userCreator, idVersion)
-  this.createManualCapituloVersiculo()
+  createManualCapituloVersiculo()
+  //createBookManual()
   //console.log(book[0])
 }
 
-//funcion para guardar los capitulos y versiculos de forma manual y masiva
-  exports.createManualCapituloVersiculo = async () => {
-  const libro = require('../Libros/ReinaValera/fullLibroReinaValera.json')
-  var version = "Reina Valera 1960"
-  let books = await Book.find({ version: version })
-  console.log(libro[4].verses)
-  
-  for (let i = 0; i < books.length; i++) {
-    
-    let idbook = books[i]._id
-      
-      //console.log(idbook)
-    for (let a = 0; a < libro.length; a++){
-      const capitulo = new Charter({ idBook: idbook, charter: libro[a].charter, order: libro[a].order, userCreator: libro[a].userCreator, version: libro[a].version, testament: libro[a].testament });
-      //let bookss = await Book.find({ version: version })
-      books[i].capitulos.push(capitulo._id)
-      //await books[i].save();
-      //await capitulo.save();
-      console.log(capitulo.charter)
-      for (let x = 0; x < libro[a].verses.length; x++){
-        //console.log(libro[i].verses[x])
-        //console.log(libro[5].verses)
-        const newVerse = await Verse({
-          version: libro[i].verses[x].version,
-          testament: libro[i].verses[x].testament,
-          userCreator: libro[i].verses[x].userCreator,
-          originCharter: capitulo.charter,
-          versiculo: libro[i].verses[x].versiculo,
-          numero: libro[i].verses[x].numero,
-        })
-        
-        //var capitulos = await Charter.findById(capitulo._id)
-        capitulo.verses.push(newVerse._id)
-        //await newVerse.save()
-        //await capitulo.save()
-        console.log(newVerse.numero)
-      }
-
-    }
-    
-    
-    
+//crear books de forma manual
+/*
+const createBookManual = async() => {
+  var librosB = require('../Libros/ReinaValera/booksReinaValera.json')
+  const version = "Reina Valera 1960"
+  const versioID = "6709af4e4ff0784a54dbf344"
+  const userCreator = "jerryBD"
+  let versions = await Versiones.findById(versioID);
+  for (let i=0; i<librosB.length; i++){
+    const data = new Book({ 
+      _id: librosB[i]._id,
+      book: librosB[i].book, 
+      order: i+1, 
+      version: version, 
+      testament: librosB[i].testament, 
+      nomenclatura: librosB[i].nomenclatura, 
+      userCreator: userCreator 
+    });
+    versions.books.push(data._id);
+    await data.save();
+    await versions.save();
+    console.log(data.book)
   }
+}
+*/
 
 
-  
 
+//funcion para guardar los capitulos y versiculos de forma manual y masiva
+
+ const createManualCapituloVersiculo = async () => {
+  //const libro = require('../Libros/ReinaValera/fullLibroReinaValera.json')
+  const capitulo = require('../Libros/ReinaValera/charterReinaValera.json')
+  //var version = "Reina Valera 1960"
+  //let books = await Book.find({ version: version })
+  //console.log(books)
+  //console.log(libro[0])
+  //console.log("aqui termina")
+  //console.log(capitulo[0].capitulos[0])
+  //console.log(capitulo[0].capitulos[1])
+  for(let i = 0; i < capitulo.length; i++){
+    //console.log(capitulo[i])
+    //let data = capitulo[i]
+    for(let a =0; a < capitulo[i].capitulos.length; a++){
+      console.log(capitulo[i].capitulos[0])
+      const newCharter2 = await Charter({
+        _id: capitulo[i].capitulos[0]._id,
+        charter: capitulo[i].capitulos[0].charter,
+        version: capitulo[i].capitulos[0].version,
+        testament: capitulo[i].capitulos[0].testament,
+        order: capitulo[i].capitulos[0].order,
+        userCreator: capitulo[i].capitulos[0].userCreator,
+        idBook: capitulo[i].capitulos[0].idBook,
+        verses: capitulo[i].capitulos[0].verses,
+      });
+      //console.log(newCharter2)
+      await newCharter2.save()
+    }
+  }
 
 }
 
@@ -283,8 +296,8 @@ exports.setverseManual = async (req, res) => {
         */
 
 // con esta funcion se crean de forma masiva los libros, algunos datos var son manuales
-/*
-const addBookManual = async (version, userCreator, idVersion) => {
+
+/*const addBookManual = async (version, userCreator, idVersion) => {
   const bookFile = require('../Libros/ReinaValera/booksReinaValera.json')
   var indice = 1
   for (let i = 0; i < bookFile.length; i++) {
@@ -299,11 +312,11 @@ const addBookManual = async (version, userCreator, idVersion) => {
     versions.books.push(data._id);
     await data.save();
     await versions.save();
-    //console.log(`${data.book}`)
+    console.log(`${data.book}`)
   }
 
-}
-*/
+}*/
+
 
 
 
