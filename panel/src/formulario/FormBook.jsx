@@ -23,7 +23,7 @@ export default function FormBook(props) {
       },
     });
 
-  const select = (versions) => {
+  const selectVersionBiblia = (versions) => {
     const data = props.BookAll.filter((x) => x.version === versions);
     setBooks(data);
   };

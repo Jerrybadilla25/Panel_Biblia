@@ -28,9 +28,5 @@ router.get('/versiones', verfyToken, Controller.getVersiones);
 router.get('/verseDia', verfyToken, Controller.getVerseDia);
 router.post('/verseDiaManual', verfyToken, Controller.setverseManual);
 
-router.get('/createManual', verfyToken, Controller.createManual);
-
-
-
 
 module.exports = router;

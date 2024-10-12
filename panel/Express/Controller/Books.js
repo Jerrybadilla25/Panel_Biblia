@@ -6,8 +6,10 @@ const VerseDia = require('../model/model.verseDia');
 
 
 exports.getBook = async (req, res) => {
+  
   const user = req.params.userName;
   const data1 = await Book.find({ userCreator: user });
+  data1.sort((a, b) => a.order - b.order);
   res.json(data1);
 };
 
@@ -214,110 +216,6 @@ exports.setverseManual = async (req, res) => {
     res.json(verse)
   } catch (error) { /* empty */ }
 }
-
-// crear los libros de forma manual y masiva, primero crear la version a mano
-exports.createManual = () => {
-  //const libro = require('../Libros/ReinaValera/fullLibroReinaValera.json') 
-  //var version = "Reina Valera 1960"
-  //var userCreator = "Jerry"
-  //var idVersion = "6702be0a3fd346d5644ed5a2"
-
-  //addBookManual(version, userCreator, idVersion)
-  createManualCapituloVersiculo()
-  //createBookManual()
-  //console.log(book[0])
-}
-
-//crear books de forma manual
-/*
-const createBookManual = async() => {
-  var librosB = require('../Libros/ReinaValera/booksReinaValera.json')
-  const version = "Reina Valera 1960"
-  const versioID = "6709af4e4ff0784a54dbf344"
-  const userCreator = "jerryBD"
-  let versions = await Versiones.findById(versioID);
-  for (let i=0; i<librosB.length; i++){
-    const data = new Book({ 
-      _id: librosB[i]._id,
-      book: librosB[i].book, 
-      order: i+1, 
-      version: version, 
-      testament: librosB[i].testament, 
-      nomenclatura: librosB[i].nomenclatura, 
-      userCreator: userCreator 
-    });
-    versions.books.push(data._id);
-    await data.save();
-    await versions.save();
-    console.log(data.book)
-  }
-}
-*/
-
-
-
-//funcion para guardar los capitulos y versiculos de forma manual y masiva
-
- const createManualCapituloVersiculo = async () => {
-  //const libro = require('../Libros/ReinaValera/fullLibroReinaValera.json')
-  const capitulo = require('../Libros/ReinaValera/charterReinaValera.json')
-  //var version = "Reina Valera 1960"
-  //let books = await Book.find({ version: version })
-  //console.log(books)
-  //console.log(libro[0])
-  //console.log("aqui termina")
-  //console.log(capitulo[0].capitulos[0])
-  //console.log(capitulo[0].capitulos[1])
-  for(let i = 0; i < capitulo.length; i++){
-    //console.log(capitulo[i])
-    //let data = capitulo[i]
-    for(let a =0; a < capitulo[i].capitulos.length; a++){
-      console.log(capitulo[i].capitulos[0])
-      const newCharter2 = await Charter({
-        _id: capitulo[i].capitulos[0]._id,
-        charter: capitulo[i].capitulos[0].charter,
-        version: capitulo[i].capitulos[0].version,
-        testament: capitulo[i].capitulos[0].testament,
-        order: capitulo[i].capitulos[0].order,
-        userCreator: capitulo[i].capitulos[0].userCreator,
-        idBook: capitulo[i].capitulos[0].idBook,
-        verses: capitulo[i].capitulos[0].verses,
-      });
-      //console.log(newCharter2)
-      await newCharter2.save()
-    }
-  }
-
-}
-
-/*
-
-
-        */
-
-// con esta funcion se crean de forma masiva los libros, algunos datos var son manuales
-
-/*const addBookManual = async (version, userCreator, idVersion) => {
-  const bookFile = require('../Libros/ReinaValera/booksReinaValera.json')
-  var indice = 1
-  for (let i = 0; i < bookFile.length; i++) {
-    //const books = await Book.find({version: version});
-    let versions = await Versiones.findById(idVersion);
-    const order = indice
-    indice = indice + 1
-    var book = bookFile[i].book
-    var nomenclatura = bookFile[i].nomenclatura
-    var testament = bookFile[i].testament
-    const data = new Book({ book, order, version, testament, nomenclatura, userCreator });
-    versions.books.push(data._id);
-    await data.save();
-    await versions.save();
-    console.log(`${data.book}`)
-  }
-
-}*/
-
-
 
 
 //funcion randon
