@@ -27,6 +27,7 @@ app.use(express.static('./build/'));
 
 app.use('/user', require('./router/router.user'));
 app.use('/books', require('./router/roter.book'));
+app.use('/strongs', require('./router/roter.strong'));
 //app.use('/', require('./router/roter'));
 
 //configuracion del server

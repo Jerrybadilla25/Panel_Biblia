@@ -19,16 +19,16 @@ const Versiculodia = (props) => {
 
     return (
         <div>
-            <div className="my-3 mx-5 d-flex justify-content-around">
+            <div className="my-3 pb-toolbar d-flex justify-content-center">
                <button 
                className="btn-select-verse"
                onClick={verseDia}
                >Cargar versiculo del dia aleatoriamente</button>
            </div>
-           <div className="my-3 mx-5 d-flex justify-content-around">
+           <div className="my-4">
                {
                    verse && (
-                       <div>
+                       <div className="pb-verse-show">
                          <p>{verse.numero}  {verse.versiculo}</p>
                          <h6>{verse.originCharter}</h6>
                          <h5>{verse.testament}</h5>

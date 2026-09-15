@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function VerseAdd(props) {
     return (
-        <div className="row">
-        <div>
-          <h2>Capitulos creados</h2>
+        <div className="row mt-4">
+        <div className="pb-card">
+          <h2 className="pb-section-title">Capitulos creados</h2>
             <h4>
                 {props.versiculos.charter}
             </h4>

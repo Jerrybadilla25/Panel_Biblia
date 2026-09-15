@@ -61,6 +61,8 @@ export default function FormBook(props) {
     <div>
       <div className="container">
         <form onSubmit={handleSubmit(onSubmit)} className="form-per">
+          <h4 className="pb-section-title">Nuevo libro</h4>
+          <div className="pb-grid">
           <div className="form-group">
             <label>Ingrese Libro</label>
             <input
@@ -127,7 +129,7 @@ export default function FormBook(props) {
               <div className="text-form-message">{errors.version?.message}</div>
             </div>
           )}
-          <div className="form-group">
+          <div className="form-group pb-full">
             <label>Seleccione el testamento</label>
             <select
               className="form-control"
@@ -140,6 +142,8 @@ export default function FormBook(props) {
             </select>
             <div className="text-form-message">{errors.testament?.message}</div>
           </div>
+          </div>
+
           <small className="text-muted">
             <p>
               <span>Usuario </span>
@@ -152,9 +156,9 @@ export default function FormBook(props) {
           </button>
         </form>
         <div className="container mt-5">
-          <h6>Seleccione una version</h6>
+          <h6 className="pb-eyebrow">Seleccione una version</h6>
 
-          <div className="d-flex justify-content-start">
+          <div className="d-flex justify-content-start pb-toolbar">
             {props.versiones.map((itm) => (
               <button
                 key={itm._id}
@@ -172,13 +176,13 @@ export default function FormBook(props) {
         <div>
           {props.BookAll && (
             <div>
-              <h3 className="ml-5">Libros creados</h3>
+              <h3 className="pb-section-title">Libros creados</h3>
 
               {books !== null && (
-                <div className="d-flex-per">
+                <div className="pb-chip-grid">
                   {books.map((itm) => (
                     <div key={itm._id}>
-                      <button className="btn btn-outline-primary mx-1 my-1">
+                      <button className="btn btn-outline-primary">
                         {itm.order}-{itm.book}
                       </button>
                     </div>

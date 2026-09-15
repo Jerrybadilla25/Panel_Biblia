@@ -1,0 +1,663 @@
+/* =========================================================
+   Home.css  -  Estilo moderno del panel (solo visual)
+   Todo esta scopeado dentro de .pb-app, por lo que no afecta
+   a ninguna otra vista ni a la logica de la aplicacion.
+   ========================================================= */
+
+.pb-app {
+  /* Paleta */
+  --pb-ink: #171126;
+  --pb-ink-soft: #3b3450;
+  --pb-muted: #6f6a85;
+  --pb-line: rgba(23, 17, 38, 0.09);
+  --pb-surface: #ffffff;
+  --pb-accent: #2957d9;
+  --pb-accent-2: #7c3aed;
+  --pb-success: #17af5c;
+  --pb-danger: #e11d48;
+  --pb-radius: 26px;
+  --pb-shadow: 0 24px 50px -30px rgba(23, 17, 38, 0.45);
+  --pb-shadow-soft: 0 12px 28px -20px rgba(23, 17, 38, 0.45);
+
+  min-height: 100vh;
+  padding-bottom: 40px;
+  color: var(--pb-ink);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue",
+    Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(1100px 520px at 10% -12%, rgba(41, 87, 217, 0.16), transparent 60%),
+    radial-gradient(900px 480px at 92% -4%, rgba(124, 58, 237, 0.15), transparent 62%),
+    linear-gradient(180deg, #f8f9fe 0%, #eef1fa 55%, #f7f8fd 100%);
+  background-attachment: fixed;
+}
+
+/* ------------------------- Barra superior ------------------------- */
+
+.pb-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid var(--pb-line);
+}
+
+.pb-topbar__inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.pb-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pb-brand__mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, var(--pb-accent), var(--pb-accent-2));
+  box-shadow: 0 12px 24px -12px rgba(41, 87, 217, 0.95);
+}
+
+.pb-brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.pb-brand__text strong {
+  font-size: 1.02rem;
+  font-weight: 750;
+  letter-spacing: 0.2px;
+  color: var(--pb-ink);
+}
+
+.pb-brand__text small {
+  color: var(--pb-muted);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.pb-topbar__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pb-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: #223c86;
+  background: rgba(41, 87, 217, 0.09);
+  border: 1px solid rgba(41, 87, 217, 0.18);
+}
+
+.pb-chip__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--pb-accent);
+  box-shadow: 0 0 0 4px rgba(41, 87, 217, 0.14);
+  animation: pb-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pb-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(41, 87, 217, 0.16); }
+  50% { box-shadow: 0 0 0 7px rgba(41, 87, 217, 0.05); }
+}
+
+.pb-user {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--pb-ink-soft);
+  background: #fff;
+  border: 1px solid var(--pb-line);
+  box-shadow: var(--pb-shadow-soft);
+  max-width: 260px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pb-user i {
+  font-size: 1rem;
+  color: var(--pb-accent);
+}
+
+/* ------------------------- Hero (Header) ------------------------- */
+
+.pb-hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.pb-hero__text {
+  min-width: 0;
+}
+
+.pb-app .jumbotron {
+  height: auto !important;
+  max-width: 1140px;
+  margin: 24px auto 0;
+  padding: 36px 34px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--pb-radius);
+  background: linear-gradient(135deg, #180f2c 0%, #251a41 48%, #2f4fd0 128%);
+  box-shadow: 0 34px 60px -34px rgba(23, 17, 38, 0.75);
+}
+
+.pb-app .jumbotron::after {
+  content: "";
+  position: absolute;
+  right: -90px;
+  bottom: -150px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(124, 58, 237, 0.6), transparent 62%);
+  pointer-events: none;
+}
+
+.pb-app .jumbotron h1.display-4 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 8px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  color: #fff;
+}
+
+.pb-app .jumbotron p.lead {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  letter-spacing: 0.2px;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+/* Logout dentro del hero (Header) */
+.pb-app .jumbotron .btn-select-logout {
+  width: auto;
+  min-width: 0;
+  margin: 4px 0 0;
+  flex: 0 0 auto;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  box-shadow: none;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.pb-app .jumbotron .btn-select-logout:hover {
+  transform: translateY(-2px);
+  border-color: transparent;
+  background: linear-gradient(135deg, #e11d48, #f43f5e);
+  color: #fff;
+  box-shadow: 0 18px 28px -18px rgba(0, 0, 0, 0.7);
+}
+
+/* ------------------------- Superficie de contenido ------------------------- */
+
+.pb-main {
+  max-width: 1140px;
+}
+
+.pb-surface {
+  margin-top: 26px;
+  padding: 26px 26px 32px;
+  border-radius: var(--pb-radius);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: var(--pb-shadow);
+  animation: pb-rise 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes pb-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Encabezado que trae SelectForm */
+.pb-surface .select-form-p {
+  margin: 0 0 20px;
+  padding: 0 0 16px;
+  border-bottom: 1px solid var(--pb-line);
+}
+
+.pb-surface .select-form-p h2 {
+  margin: 0 0 8px;
+  text-align: left;
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: 750;
+  letter-spacing: -0.2px;
+  color: var(--pb-ink);
+}
+
+.pb-surface .select-form-p p {
+  margin: 0;
+  padding: 0;
+  max-width: 78ch;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--pb-muted);
+}
+
+.pb-surface .select-form-p strong {
+  color: var(--pb-accent);
+  font-weight: 700;
+}
+
+/* ------------------------- Botones ------------------------- */
+
+.pb-app .btn-select-form,
+.pb-app .btn-select-verse,
+.pb-app .btn-select-logout,
+.pb-app .btn-select-biblia {
+  min-width: 132px;
+  width: auto;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 650;
+  letter-spacing: 0.2px;
+  border: 1px solid var(--pb-line);
+  background: #fff;
+  color: var(--pb-ink-soft);
+  box-shadow: var(--pb-shadow-soft);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease,
+    color 0.18s ease, border-color 0.18s ease;
+}
+
+.pb-app .btn-select-form:hover,
+.pb-app .btn-select-verse:hover,
+.pb-app .btn-select-biblia:hover {
+  transform: translateY(-2px);
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--pb-accent), var(--pb-accent-2));
+  color: #fff;
+  box-shadow: 0 18px 28px -18px rgba(41, 87, 217, 0.95);
+}
+
+.pb-app .btn-select-logout {
+  color: var(--pb-danger);
+  border-color: rgba(225, 29, 72, 0.28);
+  background: rgba(225, 29, 72, 0.06);
+}
+
+.pb-app .btn-select-logout:hover {
+  transform: translateY(-2px);
+  border-color: transparent;
+  background: linear-gradient(135deg, #e11d48, #f43f5e);
+  color: #fff;
+  box-shadow: 0 18px 28px -18px rgba(225, 29, 72, 0.9);
+}
+
+.pb-app .btn-select-form:focus-visible,
+.pb-app .btn-select-verse:focus-visible,
+.pb-app .btn-select-logout:focus-visible,
+.pb-app .btn-select-biblia:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(41, 87, 217, 0.22);
+}
+
+/* Botones Bootstrap usados por las vistas hijas */
+.pb-surface .btn-primary {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 650;
+  background: linear-gradient(135deg, var(--pb-accent), var(--pb-accent-2));
+  box-shadow: 0 18px 28px -18px rgba(41, 87, 217, 0.95);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.pb-surface .btn-primary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #1f47b8, #6d28d9);
+}
+
+.pb-surface .btn-outline-primary {
+  border-radius: 999px;
+  border-color: rgba(41, 87, 217, 0.35);
+  color: var(--pb-accent);
+  font-weight: 600;
+  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.pb-surface .btn-outline-primary:hover {
+  transform: translateY(-2px);
+  background: var(--pb-accent);
+  border-color: var(--pb-accent);
+  color: #fff;
+}
+
+/* ------------------------- Formularios ------------------------- */
+
+.pb-surface .form-group label {
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pb-muted);
+  margin-bottom: 6px;
+}
+
+.pb-surface .form-control {
+  height: auto;
+  padding: 11px 14px;
+  border-radius: 13px;
+  border: 1px solid rgba(23, 17, 38, 0.14);
+  background-color: #fbfbff;
+  color: var(--pb-ink);
+  font-size: 0.94rem;
+  box-shadow: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.pb-surface .form-control:focus {
+  background-color: #fff;
+  border-color: var(--pb-accent);
+  box-shadow: 0 0 0 4px rgba(41, 87, 217, 0.14);
+}
+
+.pb-surface textarea.form-control {
+  min-height: 150px;
+  line-height: 1.65;
+}
+
+.pb-surface .input-edit-verse {
+  width: 100%;
+  min-height: 150px;
+  text-align: justify;
+}
+
+.pb-surface .text-form-message {
+  margin-top: 6px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: var(--pb-danger);
+}
+
+.pb-surface .text-form-data {
+  font-family: inherit;
+  color: var(--pb-success);
+  font-weight: 650;
+}
+
+.pb-surface .text-muted {
+  color: var(--pb-muted) !important;
+  font-size: 0.84rem;
+}
+
+.pb-surface .form-per {
+  padding: 4px 0;
+}
+
+.pb-surface .box-edit-verse {
+  border-radius: 16px;
+  background: #f5f6fb;
+  border: 1px solid var(--pb-line);
+  padding: 10px;
+}
+
+.pb-surface .btn-edit-verse {
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--pb-accent), var(--pb-accent-2));
+  color: #fff;
+}
+
+/* ------------------------- Encabezados y tablas ------------------------- */
+
+.pb-surface h2,
+.pb-surface h3,
+.pb-surface h4,
+.pb-surface h5 {
+  font-family: inherit;
+  font-weight: 750;
+  letter-spacing: -0.2px;
+  color: var(--pb-ink);
+}
+
+.pb-surface h2 {
+  text-align: left;
+}
+
+.pb-surface p {
+  padding: 0;
+}
+
+.pb-surface .table {
+  overflow: hidden;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid var(--pb-line);
+}
+
+.pb-surface .table thead th {
+  border-top: none;
+  border-bottom: 1px solid var(--pb-line);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pb-muted);
+  background: #f8f9ff;
+}
+
+.pb-surface .table td {
+  vertical-align: middle;
+  border-color: var(--pb-line);
+  color: var(--pb-ink-soft);
+}
+
+.pb-surface .table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.pb-surface .table tbody tr:hover {
+  background: #f6f8ff;
+}
+
+.pb-surface .icon-delete {
+  font-size: 1.25rem;
+  color: var(--pb-accent);
+}
+
+.pb-surface .icon-delete:hover {
+  color: var(--pb-danger);
+}
+
+.pb-surface .list-edit-charter {
+  border-radius: 14px;
+  background: #f4f7ee;
+}
+
+/* ------------------------- Zona scrolleable ------------------------- */
+
+.pb-surface .box-per {
+  height: auto;
+  max-height: 520px;
+  overflow: auto;
+  padding: 4px 8px 4px 2px;
+}
+
+.pb-surface .box-per::-webkit-scrollbar {
+  width: 10px;
+}
+
+.pb-surface .box-per::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pb-surface .box-per::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(23, 17, 38, 0.18);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.pb-surface .box-per::-webkit-scrollbar-thumb:hover {
+  background: rgba(23, 17, 38, 0.3);
+  background-clip: content-box;
+}
+
+/* ------------------------- Mensajes ------------------------- */
+
+.pb-surface .msj-1 {
+  margin: 18px 0;
+  padding: 12px 16px;
+  border-radius: 16px;
+  color: #223c86;
+  background: rgba(41, 87, 217, 0.08);
+  border: 1px solid rgba(41, 87, 217, 0.2);
+}
+
+/* ------------------------- Pie ------------------------- */
+
+.pb-footer {
+  max-width: 1140px;
+  margin: 26px auto 0;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: var(--pb-muted);
+}
+
+.pb-footer__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(23, 17, 38, 0.25);
+}
+
+/* ------------------------- Responsive ------------------------- */
+
+@media (max-width: 991px) {
+  .pb-app .jumbotron {
+    margin: 18px 12px 0;
+    padding: 28px 24px;
+  }
+
+  .pb-main {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .pb-surface {
+    padding: 20px 18px 24px;
+    border-radius: 22px;
+  }
+}
+
+@media (max-width: 767px) {
+  .pb-topbar__inner {
+    padding: 10px 12px;
+  }
+
+  .pb-user {
+    max-width: 180px;
+  }
+
+  .pb-app .jumbotron {
+    padding: 24px 20px;
+  }
+
+  /* El logout del hero se mantiene compacto en pantallas chicas */
+  .pb-app .jumbotron .btn-select-logout {
+    width: auto;
+    margin: 0;
+  }
+
+  .pb-app .btn-select-form,
+  .pb-app .btn-select-verse,
+  .pb-app .btn-select-logout,
+  .pb-app .btn-select-biblia {
+    width: 100%;
+    min-width: 0;
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .pb-surface .box-per {
+    max-height: 420px;
+  }
+
+  /* Las vistas hijas usan mx-5 de Bootstrap: en pantallas chicas
+     deja muy poco ancho util dentro de la tarjeta */
+  .pb-surface .mx-5 {
+    margin-left: 4px !important;
+    margin-right: 4px !important;
+  }
+
+  .pb-surface .my-5 {
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pb-surface,
+  .pb-chip__dot {
+    animation: none;
+  }
+
+  .pb-app .btn-select-form,
+  .pb-app .btn-select-verse,
+  .pb-app .btn-select-logout,
+  .pb-app .btn-select-biblia,
+  .pb-surface .btn-primary,
+  .pb-surface .btn-outline-primary {
+    transition: none;
+  }
+}

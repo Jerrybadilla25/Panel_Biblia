@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import {getStart} from '../fecthing';
@@ -36,8 +36,6 @@ const VerseDiaManual = (props) => {
           libro: "",
           numero: ""
         });
-      }else{
-
       }
         
         
@@ -49,7 +47,7 @@ const VerseDiaManual = (props) => {
 
   return (
     <div className="mx-5 my-5">
-      <h4>Cargar versiculo manual</h4>
+      <h4 className="pb-section-title">Cargar versiculo manual</h4>
       <form className="form-per" onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
           {books && (
@@ -112,10 +110,10 @@ const VerseDiaManual = (props) => {
         </button>
       </form>
 
-      <div className="my-3 mx-5 d-flex justify-content-around">
+      <div className="my-4">
                {
                    verse && (
-                       <div>
+                       <div className="pb-verse-show">
                          <p>{verse.numero}  {verse.versiculo}</p>
                          <h6>{verse.originCharter}</h6>
                          <h5>{verse.testament}</h5>

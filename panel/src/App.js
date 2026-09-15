@@ -8,7 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 
 
-function App(props) {
+function App() {
 
     //toaster
   const notify = (mesage) =>
@@ -24,7 +24,7 @@ function App(props) {
   const [user, setUser]=useState({});
   const [FormUser, setFormUser]=useState({});
   //const http= "http://ajustes.api.bibliaav.ml";
-  const http = " http://localhost:3000";
+  const http = "http://localhost:3000";
   
   
 

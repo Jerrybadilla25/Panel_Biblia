@@ -27,6 +27,7 @@
     "start": "react-scripts start",
     "dev": "nodemon Express/server.js",
     "build": "react-scripts build",
+    "resetPsw": "node resetPassword.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

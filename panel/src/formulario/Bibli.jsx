@@ -9,11 +9,11 @@ export default function Bibli(props) {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="container mt-5">
-        <h6>Seleccione una version</h6>
+    <div className="mt-4">
+      <div>
+        <h6 className="pb-eyebrow">Seleccione una version</h6>
 
-        <div className="d-flex justify-content-start">
+        <div className="d-flex justify-content-start pb-toolbar">
           {props.versiones.map((itm) => (
             <button
               key={itm._id}
@@ -26,9 +26,9 @@ export default function Bibli(props) {
         </div>
       </div>
 
-      <div className="box-per">
+      <div className="box-per mt-4">
         {biblias !== null && (
-          <table className="table mt-5">
+          <table className="table">
             <thead>
               <tr>
                 <th scope="col">indice</th>

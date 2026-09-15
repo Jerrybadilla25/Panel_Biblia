@@ -44,6 +44,8 @@ export default function FormVersion(props) {
     return (
         <div className="container">
             <form className="form-per" onSubmit={handleSubmit(addVersionBiblia)}>
+                <h4 className="pb-section-title">Nueva version</h4>
+                <div className="pb-grid">
                 <div className="form-group">
                     <label htmlFor="">Ingrese version</label>
                     <input 
@@ -62,7 +64,7 @@ export default function FormVersion(props) {
                      />
                      <div className="text-form-message">{errors.descripcion?.message}</div>
                 </div>
-                <div className="form-group">
+                <div className="form-group pb-full">
                     <label htmlFor="">Copyrigth</label>
                     <input 
                     type="text"
@@ -71,6 +73,7 @@ export default function FormVersion(props) {
                     {...register("copyright", { required: "Este campo es requerido" })}
                      />
                      <div className="text-form-message">{errors.copyright?.message}</div>
+                </div>
                 </div>
                 <button type="submit" className="btn-select-form mt-3">
                     Guardar

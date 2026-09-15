@@ -108,12 +108,12 @@ export default function EditCharter(props) {
   }
 
   return (
-    <div className="container my-5 py-5 line-color-top">
+    <div className="container my-4 pb-4">
 
       <div className="mb-5">
-        <h6>Seleccione una version</h6>
+        <h6 className="pb-eyebrow">Seleccione una version</h6>
 
-        <div className="d-flex justify-content-start">
+        <div className="d-flex justify-content-start pb-toolbar">
           {props.versiones.map((itm) => (
             <button
               key={itm._id}
@@ -128,12 +128,12 @@ export default function EditCharter(props) {
 
 
 
-      <div className="row">
+      <div className="row pb-columns">
           {
               selectVerse !== null && 
-        <div className="col-sm-3 ">
-          <h5>Libros</h5>
-          <ul className="list-group box-per">
+        <div className="col-sm-3 pb-panel">
+          <h5 className="pb-eyebrow">Libros</h5>
+          <ul className="list-group box-per pb-list">
             
               
                 {selectVerse.map((itm) => (
@@ -148,11 +148,11 @@ export default function EditCharter(props) {
         </div>
         }
 
-        <div className="col-sm-3">
+        <div className="col-sm-3 pb-panel">
           {books.capitulos && (
             <div>
-              <h5>Capitulos</h5>
-              <ul className="list-group box-per">
+              <h5 className="pb-eyebrow">Capitulos</h5>
+              <ul className="list-group box-per pb-list">
                 {books.capitulos.map((itm) => (
                   <div key={itm._id} onClick={() => selectChater(itm._id)}>
                     <li className="list-group-item">
@@ -165,7 +165,7 @@ export default function EditCharter(props) {
           )}
         </div>
 
-        <div className="col-sm-6">
+        <div className="col-sm-6 pb-panel">
           {charter.verses && (
             <div>
               <div>
@@ -176,26 +176,26 @@ export default function EditCharter(props) {
                 
                 <div className="box-per">
                   {charter.verses.map((itm) => (
-                    <div key={itm._id} className="d-flex flex-column mt-5 box-edit-verse">
-                      <div className="d-flex justify-content-between" >
-                        <strong className="btn-edit-verse" >{itm.numero}</strong>
+                    <div key={itm._id} className="d-flex flex-column pb-verse">
+                      <div className="d-flex justify-content-between pb-verse__head" >
+                        <strong className="pb-verse__num" >{itm.numero}</strong>
                         
                         <button 
                         className="btn-edit-verse"
                         onClick={()=>editarVersiculo(itm._id)}
                         >Guardar los cambios</button>
                       </div>
-                      <input type="text" placeholder="agregar titulo" name="title" onChange={capturarTitle} defaultValue={itm.title} />
+                      <input type="text" className="form-control mb-2" placeholder="agregar titulo" name="title" onChange={capturarTitle} defaultValue={itm.title} />
                       
                       <textarea 
-                      className="input-edit-verse"
+                      className="input-edit-verse form-control"
                       defaultValue={itm.versiculo}
                       onChange={capturarEditVerses}
                       name="versiculo" 
                       cols="10" 
                       rows="10">
                       </textarea>
-                      <p>
+                      <p className="pb-verse__origin">
                        <strong>{itm.originCharter}</strong> 
                       </p>
                       

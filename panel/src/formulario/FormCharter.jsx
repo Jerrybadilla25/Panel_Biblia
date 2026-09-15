@@ -106,6 +106,7 @@ export default function FormCharter(props) {
   return (
     <div className="mx-5 my-5">
       <form onSubmit={handleSubmit(onSubmit)} className="">
+        <h4 className="pb-section-title">Nuevo capitulo</h4>
         <div className="form-group">
           <label>Seleccione libro</label>
           <select
@@ -197,10 +198,10 @@ export default function FormCharter(props) {
         </div>
       </form>
       <div className="mt-5">
-        <h6>Seleccione una version</h6>
+        <h6 className="pb-eyebrow">Seleccione una version</h6>
       </div>
             
-      <div className="d-flex justify-content-start">
+      <div className="d-flex justify-content-start pb-toolbar">
         {
           props.versiones.map(itm =>(
             <button 
